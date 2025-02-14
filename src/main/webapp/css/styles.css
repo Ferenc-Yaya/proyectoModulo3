@@ -1,4 +1,4 @@
-/* Estilos generales para el cuerpo */
+/* Estilos para el cuerpo */
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
@@ -7,7 +7,7 @@ body {
     padding: 0;
 }
 
-/* Estilo del título principal */
+/* Estilo titulo principal */
 h1 {
     text-align: center;
     color: #2e3a8c;
@@ -16,12 +16,12 @@ h1 {
     margin-top: 0;
 }
 
-/* Estilo para los subtítulos */
+/*subtítulos */
 h2, h3 {
     color: #2e3a8c;
 }
 
-/* Estilo de los párrafos */
+/*párrafos */
 p {
     font-size: 1.1em;
     line-height: 1.6;
@@ -31,12 +31,12 @@ p {
     border-radius: 8px;
 }
 
-/* Estilo para los textos destacados */
+/* Estilo negritas */
 strong {
     color: #4caf50;
 }
 
-/* Estilo del formulario */
+/*formulario*/
 form {
     display: flex;
     flex-direction: column;

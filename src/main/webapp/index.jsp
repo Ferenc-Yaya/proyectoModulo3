@@ -1,11 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<link rel="stylesheet" type="text/css" href="css/styles.css">
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Galactic Rush - Introducción</title>
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body>
     <h1>Introducción</h1>
@@ -19,7 +17,7 @@
     <form action="GameServlet" method="post">
         <label for="nombre">Nombre: </label>
         <input type="text" id="nombre" name="nombre" required>
-        <input type="submit" value="Enviar">
+        <input type="submit" value="Iniciar juego">
     </form>
 </body>
 </html>

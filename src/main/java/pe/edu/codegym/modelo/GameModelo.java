@@ -1,13 +1,13 @@
-package modelo;
+package pe.edu.codegym.modelo;
 
 public class GameModelo {
     private String pregunta;
-    private String[] respuestas;
+    private String[] opciones;
     private String resultado;
 
     public GameModelo() {
         pregunta = "Perdiste la memoria. ¿Aceptas el desafío OVNI?";
-        respuestas = new String[]{"Acepta el reto", "Rechaza el desafío"};
+        opciones = new String[]{"Acepta el reto", "Rechaza el desafío"};
         resultado = "";
     }
 
@@ -15,22 +15,22 @@ public class GameModelo {
         if (pregunta.equals("Perdiste la memoria. ¿Aceptas el desafío OVNI?")) {
             if (respuesta.equals("Acepta el reto")) {
                 pregunta = "Aceptaste el desafío. ¿Subirás al puente del capitán?";
-                respuestas = new String[]{"Sube al puente", "Negarse a subir al puente"};
+                opciones = new String[]{"Sube al puente", "Negarse a subir al puente"};
             } else if (respuesta.equals("Rechaza el desafío")) {
-                resultado = "Rechazaste el desafío. Derrota.";
+                this.resultado = "Rechazaste el desafío. Derrota.";
             }
         } else if (pregunta.equals("Aceptaste el desafío. ¿Subirás al puente del capitán?")) {
             if (respuesta.equals("Sube al puente")) {
                 pregunta = "Has subido al puente. ¿Quiénes sois?";
-                respuestas = new String[]{"Decir la verdad sobre tú mismo", "Miente sobre ti mismo"};
+                opciones = new String[]{"Decir la verdad sobre tú mismo", "Miente sobre ti mismo"};
             } else if (respuesta.equals("Negarse a subir al puente")) {
-                resultado = "No asististe a las negociaciones. Derrota.";
+                this.resultado = "No asististe a las negociaciones. Derrota.";
             }
         } else if (pregunta.equals("Has subido al puente. ¿Quiénes sois?")) {
             if (respuesta.equals("Decir la verdad sobre tú mismo")) {
-                resultado = "Has vuelto a casa. Victoria.";
+                this.resultado = "Has vuelto a casa. Victoria.";
             } else if (respuesta.equals("Miente sobre ti mismo")) {
-                resultado = "Tu vida ha sido revelada. Derrota.";
+                this.resultado = "Tu vida ha sido revelada. Derrota.";
             }
         }
     }
@@ -39,8 +39,8 @@ public class GameModelo {
         return pregunta;
     }
 
-    public String[] getRepuestas() {
-        return respuestas;
+    public String[] getOpciones() {
+        return opciones;
     }
 
     public String getResultado() {

@@ -1,5 +1,6 @@
-package control;
+package pe.edu.codegym.control;
 
+import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -7,10 +8,15 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
-import modelo.GameModelo;
+import pe.edu.codegym.modelo.GameModelo;
 
 @WebServlet("/GameServlet")
 public class GameServlet extends HttpServlet {
+    @Override
+    public void init(ServletConfig config) throws ServletException {
+        System.out.println("Iniciando el servlet");
+    }
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
@@ -39,7 +45,7 @@ public class GameServlet extends HttpServlet {
         }
 
         request.setAttribute("pregunta", game.getPregunta());
-        request.setAttribute("respuestas", game.getRepuestas());
+        request.setAttribute("opciones", game.getOpciones());
         request.setAttribute("resultado", game.getResultado());
         request.setAttribute("nombre", nombre);
 
