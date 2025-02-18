@@ -12,6 +12,7 @@ import pe.edu.codegym.modelo.GameModelo;
 
 @WebServlet("/GameServlet")
 public class GameServlet extends HttpServlet {
+
     @Override
     public void init(ServletConfig config) throws ServletException {
         System.out.println("Iniciando el servlet");

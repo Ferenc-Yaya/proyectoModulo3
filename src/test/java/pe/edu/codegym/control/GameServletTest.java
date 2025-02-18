@@ -32,48 +32,66 @@ public class GameServletTest {
     private GameServlet gameServlet;
 
     @BeforeEach
-    public void setUp() {
+    public void inicializar() {
         MockitoAnnotations.openMocks(this);
         gameServlet = new GameServlet();
     }
-
     @Test
-    public void testDoPost_Restart() throws ServletException, IOException {
+    void testDoPost_Nombre() throws Exception {
+        //Given
+        // When
+        when(request.getParameter("nombre")).thenReturn("Juan");
+        when(request.getSession()).thenReturn(session);
+        when(request.getRequestDispatcher("game.jsp")).thenReturn(requestDispatcher);
+
+        gameServlet.doPost(request, response);
+        // Then
+        verify(session).setAttribute("nombre", "Juan");
+        verify(request).setAttribute("nombre", "Juan");
+        verify(requestDispatcher).forward(request, response);
+    }
+    @Test
+    public void testDoPostRestart() throws ServletException, IOException {
+        // Given
+        // When
         when(request.getParameter("restart")).thenReturn("true");
         when(request.getSession()).thenReturn(session);
         gameServlet.doPost(request, response);
-
+        // Then
         verify(session).invalidate();
         verify(response).sendRedirect("index.jsp");
     }
 
     @Test
-    public void testDoPost_NewGame() throws ServletException, IOException {
+    public void testDoPostNuevoJuego() throws ServletException, IOException {
+        // Given
+        // When
         when(request.getParameter("nombre")).thenReturn("Juan");
         when(request.getSession()).thenReturn(session);
         when(session.getAttribute("game")).thenReturn(null);
         when(request.getRequestDispatcher("game.jsp")).thenReturn(requestDispatcher);
-
         gameServlet.doPost(request, response);
 
+        // Then
         verify(session).setAttribute(eq("game"), any(GameModelo.class));
         verify(requestDispatcher).forward(request, response);
     }
 
     @Test
-    public void testDoPost_WithAnswer() throws ServletException, IOException {
-
+    public void testDoPostRespuesta() throws ServletException, IOException {
+        // Given
         GameModelo game = new GameModelo();
+        // When
         when(request.getParameter("respuesta")).thenReturn("respuesta1");
         when(request.getSession()).thenReturn(session);
         when(session.getAttribute("game")).thenReturn(game);
         when(request.getRequestDispatcher("game.jsp")).thenReturn(requestDispatcher);
-
         gameServlet.doPost(request, response);
-
+        // Then
         verify(request).setAttribute("pregunta", game.getPregunta());
-        verify(request).setAttribute("respuestas", game.getOpciones());
+        verify(request).setAttribute("opciones", game.getOpciones());
         verify(request).setAttribute("resultado", game.getResultado());
         verify(requestDispatcher).forward(request, response);
     }
+
 }

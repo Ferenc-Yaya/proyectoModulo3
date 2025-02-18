@@ -2,6 +2,7 @@ package pe.edu.codegym.modelo;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class GameModeloTest {
@@ -9,81 +10,131 @@ public class GameModeloTest {
     private GameModelo game;
 
     @BeforeEach
-    public void setUp() {
+    public void inicializar() {
         game = new GameModelo();
     }
 
     @Test
     public void testInicializacion() {
-        assertEquals("Perdiste la memoria. ¿Aceptas el desafío OVNI?", game.getPregunta());
-        assertArrayEquals(new String[]{"Acepta el reto", "Rechaza el desafío"}, game.getOpciones());
-        assertEquals("", game.getResultado());
+        //Acomodar
+        String pregunta="Perdiste la memoria. ¿Aceptas el desafío OVNI?";
+        String[] opciones= {"Acepta el reto", "Rechaza el desafío"};
+        String resultadoOpcion ="";
+        //Actuar
+        String resultado=game.getPregunta();
+        String[] resultadoOpciones=game.getOpciones();
+        String resultadoO=game.getResultado();
+        //Asegurar
+        assertEquals(pregunta, resultado);
+        assertArrayEquals(opciones, resultadoOpciones);
+        assertEquals(resultadoOpcion, resultadoO);
     }
 
     @Test
-    public void testRespuesta_AceptaElReto() {
+    public void testRespuestaAceptaElReto() {
+        //A
+        String pregunta="Aceptaste el desafío. ¿Subirás al puente del capitán?";
+        String[] opciones= {"Sube al puente", "Negarse a subir al puente"};
+        String resultadoOpcion ="";
+        //A
         game.cadenaRespuestas("Acepta el reto");
-
-        assertEquals("Aceptaste el desafío. ¿Subirás al puente del capitán?", game.getPregunta());
-        assertArrayEquals(new String[]{"Sube al puente", "Negarse a subir al puente"}, game.getOpciones());
-        assertEquals("", game.getResultado());
+        String resultado=game.getPregunta();
+        String[] resultadoOpciones=game.getOpciones();
+        String resultadoO=game.getResultado();
+        //A
+        assertEquals(pregunta, resultado);
+        assertArrayEquals(opciones, resultadoOpciones);
+        assertEquals(resultadoOpcion, resultadoO);
     }
 
     @Test
-    public void testRespuesta_RechazaElDesafio() {
-
+    public void testRespuestaRechazaElDesafio() {
+        //A
+        String pregunta="Perdiste la memoria. ¿Aceptas el desafío OVNI?";
+        String[] opciones= {"Acepta el reto", "Rechaza el desafío"};
+        String resultadoOpcion ="Rechazaste el desafío. Derrota.";
+        //A
         game.cadenaRespuestas("Rechaza el desafío");
-
-        assertEquals("Perdiste la memoria. ¿Aceptas el desafío OVNI?", game.getPregunta());
-        assertArrayEquals(new String[]{"Acepta el reto", "Rechaza el desafío"}, game.getOpciones());
-        assertEquals("Rechazaste el desafío. Derrota.", game.getResultado());
+        String resultado=game.getPregunta();
+        String[] resultadoOpciones=game.getOpciones();
+        String resultadoO=game.getResultado();
+        //A
+        assertEquals(pregunta, resultado);
+        assertArrayEquals(opciones, resultadoOpciones);
+        assertEquals(resultadoOpcion, resultadoO);
     }
 
     @Test
-    public void testRespuesta_SubeAlPuente() {
+    public void testRespuestaSubeAlPuente() {
+        //A
+        String pregunta="Has subido al puente. ¿Quiénes sois?";
+        String[] opciones= {"Decir la verdad sobre tú mismo", "Miente sobre ti mismo"};
+        String resultadoOpcion ="";
+        //A
         game.cadenaRespuestas("Acepta el reto");
-
         game.cadenaRespuestas("Sube al puente");
-
-        assertEquals("Has subido al puente. ¿Quiénes sois?", game.getPregunta());
-        assertArrayEquals(new String[]{"Decir la verdad sobre tú mismo", "Miente sobre ti mismo"}, game.getOpciones());
-        assertEquals("", game.getResultado());
+        String resultado=game.getPregunta();
+        String[] resultadoOpciones=game.getOpciones();
+        String resultadoO=game.getResultado();
+        //A
+        assertEquals(pregunta,resultado);
+        assertArrayEquals(opciones,resultadoOpciones);
+        assertEquals(resultadoOpcion,resultadoO);
     }
 
     @Test
-    public void testRespuesta_NegarseASubirAlPuente() {
+    public void testRespuestaNegarseASubirAlPuente() {
+        //A
+        String pregunta="Aceptaste el desafío. ¿Subirás al puente del capitán?";
+        String[] opciones= {"Sube al puente", "Negarse a subir al puente"};
+        String resultadoOpcion ="No asististe a las negociaciones. Derrota.";
+        //A
         game.cadenaRespuestas("Acepta el reto");
-
         game.cadenaRespuestas("Negarse a subir al puente");
-
-        assertEquals("Aceptaste el desafío. ¿Subirás al puente del capitán?", game.getPregunta());
-        assertArrayEquals(new String[]{"Sube al puente", "Negarse a subir al puente"}, game.getOpciones());
-        assertEquals("No asististe a las negociaciones. Derrota.", game.getResultado());
+        String resultado=game.getPregunta();
+        String[] resultadoOpciones=game.getOpciones();
+        String resultadoO=game.getResultado();
+        //A
+        assertEquals(pregunta, resultado);
+        assertArrayEquals(opciones, resultadoOpciones);
+        assertEquals(resultadoOpcion, resultadoO);
     }
 
     @Test
-    public void testRespuesta_DecirLaVerdad() {
+    public void testRespuestaDecirLaVerdad() {
+        //A
+        String pregunta="Has subido al puente. ¿Quiénes sois?";
+        String[] opciones= {"Decir la verdad sobre tú mismo", "Miente sobre ti mismo"};
+        String resultadoOpcion ="Has vuelto a casa. Victoria.";
+        //A
         game.cadenaRespuestas("Acepta el reto");
-
         game.cadenaRespuestas("Sube al puente");
-
         game.cadenaRespuestas("Decir la verdad sobre tú mismo");
-
-        assertEquals("Has subido al puente. ¿Quiénes sois?", game.getPregunta());
-        assertArrayEquals(new String[]{"Decir la verdad sobre tú mismo", "Miente sobre ti mismo"}, game.getOpciones());
-        assertEquals("Has vuelto a casa. Victoria.", game.getResultado());
+        String resultado=game.getPregunta();
+        String[] resultadoOpciones=game.getOpciones();
+        String resultadoO=game.getResultado();
+        //A
+        assertEquals(pregunta, resultado);
+        assertArrayEquals(opciones, resultadoOpciones);
+        assertEquals(resultadoOpcion, resultadoO);
     }
 
     @Test
-    public void testRespuesta_MienteSobreTiMismo() {
+    public void testRespuestaMienteSobreTiMismo() {
+        //A
+        String pregunta="Has subido al puente. ¿Quiénes sois?";
+        String[] opciones= {"Decir la verdad sobre tú mismo", "Miente sobre ti mismo"};
+        String resultadoOpcion ="Tu vida ha sido revelada. Derrota.";
+        //A
         game.cadenaRespuestas("Acepta el reto");
-
         game.cadenaRespuestas("Sube al puente");
-
         game.cadenaRespuestas("Miente sobre ti mismo");
-
-        assertEquals("Has subido al puente. ¿Quiénes sois?", game.getPregunta());
-        assertArrayEquals(new String[]{"Decir la verdad sobre tú mismo", "Miente sobre ti mismo"}, game.getOpciones());
-        assertEquals("Tu vida ha sido revelada. Derrota.", game.getResultado());
+        String resultado=game.getPregunta();
+        String[] resultadoOpciones=game.getOpciones();
+        String resultadoO=game.getResultado();
+        //A
+        assertEquals(pregunta, resultado);
+        assertArrayEquals(opciones, resultadoOpciones);
+        assertEquals(resultadoOpcion, resultadoO);
     }
 }
